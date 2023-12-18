@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    background-color: purple;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+
+
+
+.sign-up-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in-container a{
+    margin: 3px;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 70%;
+    padding: 8px;
+    color: #fff;
+    background-color: #1d68a7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+    
+}
+
+button .ghost{
+    background-color: transparent;
+    border: 1px solid #1d68a7;
+    color: #1d68a7;
+}
+
+a {
+    text-decoration: none;
+    color: #1d68a7;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+}
+
+#status {
+    display: none;
+}
+
+
+#forgotPassEmail {
+    display: none;
+}
+
+
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+    transform: translateX(0);
+}
+
+.overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.overlay-panel {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+#signUp.overlay-left {
+    transform: translateX(0);
+}
+
+#signIn.overlay-right {
+    transform: translateX(-100%);
+}
+
+/* Buttons */
+#create-account {
+    margin-top:10px;
+    border-radius:5px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+#logIn {
+    margin-left:20px;
+    margin-top: 5px;
+}
+
+#verifyMailBtn {
+    margin-left:20px;
+    width: 40%;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+#signUp{
+    margin-left: 20px;
+}
+
+#googleSignup {
+    margin-left: 20px;
+    background-color: #fff;
+    width: 50%;
+}
+
+#googleSignup img{
+    width: 150px;
+    
+}
+#toLoginPage {
+    margin-left: 20px;
+    width: 40%;
+}
+
+#googleSignIn {
+    margin-left: 20px;
+    background-color: #fff;
+    width: 50%;
+}
+
+#googleSignIn img{
+    width: 150px;
+}
+
+
