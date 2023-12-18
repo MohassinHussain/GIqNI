@@ -99,6 +99,10 @@ a {
     display: none;
 }
 
+#loginStatus {
+    display: none;
+}
+
 
 #forgotPassEmail {
     display: none;

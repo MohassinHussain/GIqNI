@@ -21,10 +21,7 @@ logInSignUp.addEventListener('click', ()=>{
    overlayPanel.style.display = 'none';
 })
 
-/* logIn.addEventListener('click', ()=>{
-    alert("Logged In")
-    window.location.assign("home.html")
-}) */
+ 
 
 
 
@@ -42,6 +39,8 @@ const email = document.getElementById('Email');
 const password = document.getElementById('Password');
 const loginHeading = document.getElementById('loginHeading');
 const status = document.getElementById('status');
+
+
 
 function forgotPassword(){
     forgotPassEmail.style.display='flex'
