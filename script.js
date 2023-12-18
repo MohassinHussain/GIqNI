@@ -12,6 +12,7 @@ const toLoginPage = document.getElementById('toLoginPage')
 toLoginPage.addEventListener('click', () =>{
     signInContainer.style.display='flex'    
     signUpForm.style.display='none'
+    
 })
 
 
@@ -38,16 +39,16 @@ const verifyMailBtn = document.getElementById('verifyMailBtn');
 const email = document.getElementById('Email');
 const password = document.getElementById('Password');
 const loginHeading = document.getElementById('loginHeading');
-const status = document.getElementById('status');
+
 
 
 
 function forgotPassword(){
     forgotPassEmail.style.display='flex'
     verifyMailBtn.style.display='flex'
-    email.style.display='none'
-    password.style.display='none'
-    loginHeading.innerHTML = "Password Reset"
+ /*   email.style.display='none'
+    password.style.display='none' */
+ 
     logIn.style.display='none'
     
     

@@ -1,246 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Login/Sign Up Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login/Sign Up Form</title>
 </head>
-
 <body>
-  <div class="container" id="container">
-    <div class="overlay-container" id="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel" id="overlay-panel">
-          <h1>Welcome!</h1>
-          <p>To keep connected with us, login or signup. Click below</p>
-          <button id="logInSignUp">Login/ Sign Up</button>
-
+    <div class="container" id="container">
+        <div class="overlay-container" id="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel" id="overlay-panel">
+                    <h1>Welcome!</h1>
+                    <p>To keep connected with us, log in or sign up. Click below</p>
+                    <button id="logInSignUp">Login/ Sign Up</button>
+                </div>
+            </div>
         </div>
 
-      </div>
+        <div class="sign-up-container" id="sign-up-form">
+            <div class="form" name="signupForm" action="">
+                <h1>Create Account</h1>
+                <input id="name" name="name" type="text" placeholder="Name" required>
+                <h4 id="createAccountStatus">Status</h4>
+                <input id="email" name="email" type="email" placeholder="Email" required>
+                <input id="password" name="password" type="password" placeholder="Password" required>
+                <button id="signUp" type="submit">Sign Up</button>
+                <h3>Or</h3>
+                <button id="googleSignup"><img src="/storage/emulated/0/Pictures/Screenshots/googleSignUp.jpg"></button>
+                <button id="toLoginPage" type="submit"><b>Go to Login Page</b></button>
+            </div>
+        </div>
+
+        <div class="sign-in-container" id="sign-in-container">
+            <div class="form">
+                <h1 id="loginHeading">Login</h1>
+                <h4 id="loginStatus">Status</h4>
+                <input type="email" id="Email" placeholder="Email" required>
+                <input type="password" id="Password" placeholder="Password" required>
+                <a href="#" id="forgotPasswordLink" onclick="forgotPassword()">Forgot your password?</a>
+                <h4 id="forgotPasswordStatus">Status</h4>
+                <input name="forgotPassEmail" id="forgotPassEmail" type="email" placeholder="Enter email to send reset Password Link" required>
+                <button id="verifyMailBtn">Send verification link to mail</button>
+                <button id="logIn" type="submit">Login</button>
+                <h3>Or</h3>
+                <button id="googleSignIn"><img src="/storage/emulated/0/Download/gpogleSignin.png"></button>
+                <button id="create-account">Don't have an account? Create One</button>
+            </div>
+        </div>
     </div>
 
+    <script src="script.js"></script>
+    
+    <script type="module">
+       
 
-    <div class="sign-up-container" id="sign-up-form">
-      <div class="form" name="signupForm" action="">
-        <h1>Create Account</h1>
-        <input id="name" name="name" type="text" placeholder="Name" required>
-        <input id="email" name="email" type="email" placeholder="Email" required>
-        <input id="password" name="password" type="password" placeholder="Password" required>
-        <button id="signUp" type="submit">Sign Up</button>
-        <h3>Or</h3>
-        <button id="googleSignup"><img src="/storage/emulated/0/Pictures/Screenshots/googleSignUp.jpg"></button>
-        <button id="toLoginPage" type="submit"><b>Go to Login Page</b></button>
-      </div>
-    </div>
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signInWithRedirect,
+    getRedirectResult,
+    sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyCutNzd-Kkx3GhYkjFSeJD7LEJZ4e9U3jc",
+    authDomain: "got-it-note-it.firebaseapp.com",
+    projectId: "got-it-note-it",
+    storageBucket: "got-it-note-it.appspot.com",
+    messagingSenderId: "167482909053",
+    appId: "1:167482909053:web:656a090905b3b459282c14"
+};
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth();
+const provider = new GoogleAuthProvider();
 
-    <div class="sign-in-container" id="sign-in-container">
-      <div class="form">
-        <h1 id="loginHeading">Login</h1>
-        <h4 id="loginStatus">Status</h4>
-        <input type="email" id="Email" placeholder="Email" required>
+const signupButton = document.getElementById('signUp');
 
-        <input type="password" id="Password" placeholder="Password" required>
+signupButton.addEventListener('click', (e) => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const createAccountStatus = document.getElementById('createAccountStatus');
 
-        <a href="#" id="forgotPasswordLink" onclick="forgotPassword()">Forgot your password?</a>
-        <h4 id="status">Status</h4>
-        <input name="forgotPassEmail" id="forgotPassEmail" type="email"
-          placeholder="Enter email to send reset Password Link" required>
-
-        <button id="verifyMailBtn">Send verification link to mail</button>
-
-        <button id="logIn" type="submit">Login</button>
-
-        <h3>Or</h3>
-
-        <button id="googleSignIn"><img src="/storage/emulated/0/Download/gpogleSignin.png"></button>
-        <button id="create-account">Don't have an account? Create One</button>
-      </div>
-    </div>
-
-
-
-  </div>
-
-  <script src="script.js"></script>
-
-  <script type="module">
-
-    import {initializeApp} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-
-    import {getDatabase} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-    import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCutNzd-Kkx3GhYkjFSeJD7LEJZ4e9U3jc",
-      authDomain: "got-it-note-it.firebaseapp.com",
-      projectId: "got-it-note-it",
-      storageBucket: "got-it-note-it.appspot.com",
-      messagingSenderId: "167482909053",
-      appId: "1:167482909053:web:656a090905b3b459282c14"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
-
-    const signupButton = document.getElementById('signUp');
-
-    signupButton.addEventListener('click', (e) => {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // Signed up 
-          const user = userCredential.user;
-          // ...
-          alert("User created");
-          window.location.assign('index.html');
+            // Signed up 
+            const user = userCredential.user;
+            // ...
+            alert("User created with email, " + email);
+            window.location.assign('index.html');
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-          alert(errorMessage)
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+            createAccountStatus.innerHTML = errorMessage;
+            createAccountStatus.style.display = 'flex';
+            createAccountStatus.style.color = 'red';
         });
-    })
+});
 
-    const loginButton = document.getElementById('logIn');
+const loginButton = document.getElementById('logIn');
 
-    loginButton.addEventListener('click', (e) => {
+loginButton.addEventListener('click', (e) => {
+    const email = document.getElementById('Email').value;
+    const password = document.getElementById('Password').value;
+    const loginStatus = document.getElementById('loginStatus');
 
-      const email = document.getElementById('Email').value;
-      const password = document.getElementById('Password').value;
-      const status = document.getElementById('loginStatus');
-      signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          /* alert("logged In") */
+            // Signed in 
+            const user = userCredential.user;
+            // alert("logged In")
 
-          /* loginStatus.innerHTML = "Logging In"; */
-          alert("Welcome " + user.displayName);
-          loginStatus.style.display = 'flex';
-          loginStatus.style.color = 'green';
-          window.location.assign("home.html")
+            /* loginStatus.innerHTML = "Logging In"; */
+
+            alert("Welcome " + user.displayName);
+            loginStatus.style.display = 'flex';
+            loginStatus.style.color = 'green';
+            window.location.assign("home.html");
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          /* alert(errorMessage) */
-          loginStatus.innerHTML = errorMessage;
-          loginStatus.style.display = 'flex';
-          loginStatus.style.color = 'red';
-
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            /* alert(errorMessage) */
+            loginStatus.innerHTML = errorMessage;
+            loginStatus.style.display = 'flex';
+            loginStatus.style.color = 'red';
         });
-    })
+});
 
+const googleSignUpButton = document.getElementById('googleSignup');
 
-    const googleSignUpButton = document.getElementById('googleSignup');
+googleSignUpButton.addEventListener('click', (e) => {
+    // Popup or Redirect code here
+});
 
-    googleSignUpButton.addEventListener('click', (e) => {
+const verifyMailBtn = document.getElementById('verifyMailBtn');
 
-      /* Popup */
+verifyMailBtn.addEventListener('click', (e) => {
+    const email = document.getElementById('forgotPassEmail').value;
+    const forgotPasswordStatus = document.getElementById('forgotPasswordStatus');
 
-      /*signInWithPopup(auth, provider)
-        .then((result) => {
-          const email = document.getElementById('email').value;
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
-          // The signed-in user info.
-          const user = result.user;
-          // IdP data available using getAdditionalUserInfo(result)
-          // ...
-        }).catch((error) => {
-          // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // The email of the user's account used.
-          const email = error.customData.email;
-          // The AuthCredential type that was used.
-          const credential = GoogleAuthProvider.credentialFromError(error);
-          // ...
-        }); */
-
-
-      /* Get redirect result */
-
-
-
-      /* getRedirectResult(auth)
-        .then((result) => {
-          // This gives you a Google Access Token. You can use it to access Google APIs.
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
-      
-          // The signed-in user info.
-          const user = result.user;
-          alert(user.displayName)
-          // IdP data available using getAdditionalUserInfo(result)
-          // ...
-        }).catch((error) => {
-          // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // The email of the user's account used.
-          const email = error.customData.email;
-          // The AuthCredential type that was used.
-          const credential = GoogleAuthProvider.credentialFromError(error);
-          // ...
-        }); */
-
-
-      /* Redirect */
-
-
-      /*   signInWithRedirect(auth, provider); */
-
-
-
-    })
-
-    const verifyMailBtn = document.getElementById('verifyMailBtn');
-
-    verifyMailBtn.addEventListener('click', (e) => {
-      const email = document.getElementById('forgotPassEmail').value;
-
-      sendPasswordResetEmail(auth, email)
+    sendPasswordResetEmail(auth, email)
         .then(() => {
-          // Password reset email sent!
-          // ..
-          status.innerHTML = "Verification Mail has Sent to, " + email;
-          status.style.color = 'green';
-          status.style.display = 'flex';
-          /* alert("Verification Mail has Sent to,", email); */
+            // Password reset email sent!
+            // ..
+            status.innerHTML = "Verification Mail has Sent to, " + email;
+            forgotPasswordStatus.style.color = 'green';
+            forgotPasswordStatus.style.display = 'flex';
+            /* alert("Verification Mail has Sent to,", email); */
         })
-
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-          /* alert(errorMessage); */
-          status.innerHTML = errorMessage;
-          status.style.display = 'flex';
-          status.style.color = 'red';
-
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+            /* alert(errorMessage); */
+            forgotPasswordStatus.innerHTML = errorMessage;
+            forgotPasswordStatus.style.display = 'flex';
+            forgotPasswordStatus.style.color = 'red';
         });
-    })
+});
 
 
-  </script>
-
-
-
+    </script>
 </body>
-
 </html>
