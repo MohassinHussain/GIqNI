@@ -165,10 +165,16 @@ a {
     margin-left: 20px;
     font-weight: bold;
 }
+#create-account:hover {
+    padding: 10px;
+}
 
 #logIn {
     margin-left:20px;
     margin-top: 5px;
+}
+#logIn:hover {
+    padding: 10px;
 }
 
 #verifyMailBtn {
@@ -183,20 +189,33 @@ a {
 #signUp{
     margin-left: 20px;
 }
+#signUp:hover {
+    padding: 10px;
+}
 
 #googleSignup {
     margin-left: 20px;
     background-color: #fff;
     width: 50%;
+    margin-bottom: 10px;
+}
+#googleSignup:hover {
+    margin-left: 20px;
+    background-color: #1d68a7 ;
+    width: 50%;
+    
 }
 
 #googleSignup img{
     width: 150px;
-    
+    border-radius: 6px;
 }
 #toLoginPage {
     margin-left: 20px;
     width: 40%;
+}
+#toLoginPage:hover {
+    padding: 10px;
 }
 
 #googleSignIn {
@@ -204,9 +223,14 @@ a {
     background-color: #fff;
     width: 50%;
 }
+#googleSignIn:hover {
+    margin-left: 20px;
+    background-color: #1d68a7 ;
+    width: 50%;
+}
 
 #googleSignIn img{
     width: 150px;
+    border-radius: 6px;
 }
-
 
