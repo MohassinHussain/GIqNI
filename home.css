@@ -1,0 +1,136 @@
+/*
+    notes Home page CSS
+*/
+
+
+* {
+    padding: 0;
+    margin: 0;
+    
+}
+body {
+    background-color: rgb(118, 18, 142);
+}
+.main {
+    width: 100%;
+    height: 100vh;
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+ nav {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(186, 83, 83);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: antiquewhite;
+}
+
+.ham-menu {
+    display: none;
+    
+}
+
+nav ul {
+    display: flex;
+    
+}
+a{
+    text-decoration: none;
+    padding: 10px;
+}
+a:hover{
+    color: aquamarine;
+}
+
+
+@media screen and (max-width: 768px) {
+    .ham-menu {
+        display: flex;
+        margin-left: 80px;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 10%;
+        text-align: center;
+        position: relative;
+        top: 40px;
+        border-radius: 10px;
+        background-color: #c8b0b0;
+    }
+
+    nav ul {
+        margin: 10px 0;
+    }
+} 
+
+
+
+#addNote-button {
+    float: left;
+    margin: 10px;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgb(193, 119, 119);
+}
+
+.note {
+    margin: 10px;
+    width: 300px;
+    height: 200px;
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+.tool-bar {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: black;
+    
+}
+.tool-bar i{
+   color: rgb(237, 206, 166);  
+   float: right;
+   padding: 5px;
+}
+.tool-bar .delete:hover{
+   background-color: rgb(223, 60, 15);
+   border-radius: 5px;
+}
+.tool-bar .save:hover{
+   background-color: rgb(63, 209, 55);
+   border-radius: 5px;
+}
+#saved-pop {
+    display: none;
+}
+
+.tool-bar .copy:hover{
+   background-color: rgb(23, 146, 202);
+   border-radius: 5px;
+}
+
+
+textarea {
+    width: 300px;
+    height: 200px;
+    resize: none;
+    border-radius: 5px;
+} 
+textarea:focus {
+    border: 0;
+    outline: 0;
+}
+
